@@ -6,10 +6,13 @@ class Board
 
     constructor()
     {
-        this.GenerateVisualBoard();    	
-        this.GenerateCellTabel();
-        this.GenerateCarrier();
-        this.GenerateBattleship();
+        this.GenerateVisualBoard();   	
+        this.GenerateCellTabel()
+        this.GenerateCarrier()
+        this.GenerateBattleship()
+        this.GenerateSubmarine()
+        this.GenerateCruiser()
+        this.GenereteDestroyer()
     }
 
     GenerateCellTabel()  : void
@@ -146,7 +149,6 @@ class Board
         let row:number =Math.floor(Math.random() * 10)
         let col:number =Math.floor(Math.random() * 10)
         let cell: Cell
-        //alert(row + " " + col)
         let i:number
         if (row < 5 && col < 5)
         {
@@ -297,6 +299,144 @@ class Board
             }
         }
     }
+
+    GenerateSubmarine() :void
+    {
+        let row:number =Math.floor(Math.random() * 10)
+        let col:number =Math.floor(Math.random() * 10)
+        let cell: Cell
+        let i:number
+        let direction:number = Math.floor(Math.random() * 4)
+        if (direction == 0 && row <= 7 && !this.cells[row][col].occupied && !this.cells[row+1][col].occupied && !this.cells[row+2][col].occupied)
+        {
+            for (i = row; i < row+3; i++)
+            {
+                cell = this.cells[i][col]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 1 && col >= 2 && !this.cells[row][col].occupied && !this.cells[row][col-1].occupied && !this.cells[row][col-2].occupied)
+        {
+            for (i = col; i > col-3; i--)
+            {
+                cell = this.cells[row][i]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 2 && row >= 2 && !this.cells[row][col].occupied && !this.cells[row-1][col].occupied && !this.cells[row-2][col].occupied)
+        {
+            for (i = row; i > row-3; i--)
+            {
+                cell = this.cells[i][col]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 3 && col <= 7 && !this.cells[row][col].occupied && !this.cells[row][col+1].occupied && !this.cells[row][col+2].occupied)
+        {
+            for (i = col; i < col+3; i++)            {
+                cell = this.cells[row][i]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else
+        this.GenerateSubmarine()
+    }
+
+    GenerateCruiser() :void
+    {
+        let row:number =Math.floor(Math.random() * 10)
+        let col:number =Math.floor(Math.random() * 10)
+        let cell: Cell
+        let i:number
+        let direction:number = Math.floor(Math.random() * 4)
+        if (direction == 0 && row <= 7 && !this.cells[row][col].occupied && !this.cells[row+1][col].occupied && !this.cells[row+2][col].occupied)
+        {
+            for (i = row; i < row+3; i++)
+            {
+                cell = this.cells[i][col]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 1 && col >= 2 && !this.cells[row][col].occupied && !this.cells[row][col-1].occupied && !this.cells[row][col-2].occupied)
+        {
+            for (i = col; i > col-3; i--)
+            {
+                cell = this.cells[row][i]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 2 && row >= 2 && !this.cells[row][col].occupied && !this.cells[row-1][col].occupied && !this.cells[row-2][col].occupied)
+        {
+            for (i = row; i > row-3; i--)
+            {
+                cell = this.cells[i][col]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 3 && col <= 7 && !this.cells[row][col].occupied && !this.cells[row][col+1].occupied && !this.cells[row][col+2].occupied)
+        {
+            for (i = col; i < col+3; i++)            {
+                cell = this.cells[row][i]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else
+        this.GenerateCruiser()
+    }
+
+    GenereteDestroyer(): void
+    {
+        let row:number =Math.floor(Math.random() * 10)
+        let col:number =Math.floor(Math.random() * 10)
+        let cell: Cell
+        let i:number
+        let direction:number = Math.floor(Math.random() * 4)
+        if (direction == 0 && row <= 8 && !this.cells[row][col].occupied && !this.cells[row+1][col].occupied)
+        {
+            for (i = row; i < row+2; i++)
+            {
+                cell = this.cells[i][col]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 1 && col >= 1 && !this.cells[row][col].occupied && !this.cells[row][col-1].occupied)
+        {
+            for (i = col; i > col-2; i--)
+            {
+                cell = this.cells[row][i]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 2 && row >= 1 && !this.cells[row][col].occupied && !this.cells[row-1][col].occupied)
+        {
+            for (i = row; i > row-2; i--)
+            {
+                cell = this.cells[i][col]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else if (direction == 3 && col <= 8 && !this.cells[row][col].occupied && !this.cells[row][col+1].occupied)
+        {
+            for (i = col; i < col+2; i++)            {
+                cell = this.cells[row][i]
+                cell.occupied = true
+                cell.DrawShip(i,col)
+            }
+        }
+        else
+        this.GenereteDestroyer()
+    }
 }
 
 class Cell {
@@ -312,7 +452,7 @@ class Cell {
     }
 
     DrawShip(row:number, col:number) :void{
-        this.cellV.innerHTML = "X"
+        this.cellV.style.backgroundColor = "black"
     }
 }
 

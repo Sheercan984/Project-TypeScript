@@ -5,6 +5,9 @@ var Board = /** @class */ (function () {
         this.GenerateCellTabel();
         this.GenerateCarrier();
         this.GenerateBattleship();
+        this.GenerateSubmarine();
+        this.GenerateCruiser();
+        this.GenereteDestroyer();
     }
     Board.prototype.GenerateCellTabel = function () {
         this.cells = [];
@@ -104,7 +107,6 @@ var Board = /** @class */ (function () {
         var row = Math.floor(Math.random() * 10);
         var col = Math.floor(Math.random() * 10);
         var cell;
-        //alert(row + " " + col)
         var i;
         if (row < 5 && col < 5) {
             var direction = Math.floor(Math.random() * 2);
@@ -117,7 +119,6 @@ var Board = /** @class */ (function () {
                     }
                 }
                 else {
-                    alert("works");
                     this.GenerateBattleship();
                 }
             }
@@ -130,7 +131,6 @@ var Board = /** @class */ (function () {
                     }
                 }
                 else {
-                    alert("works");
                     this.GenerateBattleship();
                 }
             }
@@ -146,7 +146,6 @@ var Board = /** @class */ (function () {
                     }
                 }
                 else {
-                    alert("works");
                     this.GenerateBattleship();
                 }
             }
@@ -159,7 +158,6 @@ var Board = /** @class */ (function () {
                     }
                 }
                 else {
-                    alert("works");
                     this.GenerateBattleship();
                 }
             }
@@ -175,7 +173,6 @@ var Board = /** @class */ (function () {
                     }
                 }
                 else {
-                    alert("works");
                     this.GenerateBattleship();
                 }
             }
@@ -188,7 +185,6 @@ var Board = /** @class */ (function () {
                     }
                 }
                 else {
-                    alert("works");
                     this.GenerateBattleship();
                 }
             }
@@ -204,7 +200,6 @@ var Board = /** @class */ (function () {
                     }
                 }
                 else {
-                    alert("works");
                     this.GenerateBattleship();
                 }
             }
@@ -217,11 +212,121 @@ var Board = /** @class */ (function () {
                     }
                 }
                 else {
-                    alert("works");
                     this.GenerateBattleship();
                 }
             }
         }
+    };
+    Board.prototype.GenerateSubmarine = function () {
+        var row = Math.floor(Math.random() * 10);
+        var col = Math.floor(Math.random() * 10);
+        var cell;
+        var i;
+        var direction = Math.floor(Math.random() * 4);
+        if (direction == 0 && row <= 7 && !this.cells[row][col].occupied && !this.cells[row + 1][col].occupied && !this.cells[row + 2][col].occupied) {
+            for (i = row; i < row + 3; i++) {
+                cell = this.cells[i][col];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 1 && col >= 2 && !this.cells[row][col].occupied && !this.cells[row][col - 1].occupied && !this.cells[row][col - 2].occupied) {
+            for (i = col; i > col - 3; i--) {
+                cell = this.cells[row][i];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 2 && row >= 2 && !this.cells[row][col].occupied && !this.cells[row - 1][col].occupied && !this.cells[row - 2][col].occupied) {
+            for (i = row; i > row - 3; i--) {
+                cell = this.cells[i][col];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 3 && col <= 7 && !this.cells[row][col].occupied && !this.cells[row][col + 1].occupied && !this.cells[row][col + 2].occupied) {
+            for (i = col; i < col + 3; i++) {
+                cell = this.cells[row][i];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else
+            this.GenerateSubmarine();
+    };
+    Board.prototype.GenerateCruiser = function () {
+        var row = Math.floor(Math.random() * 10);
+        var col = Math.floor(Math.random() * 10);
+        var cell;
+        var i;
+        var direction = Math.floor(Math.random() * 4);
+        if (direction == 0 && row <= 7 && !this.cells[row][col].occupied && !this.cells[row + 1][col].occupied && !this.cells[row + 2][col].occupied) {
+            for (i = row; i < row + 3; i++) {
+                cell = this.cells[i][col];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 1 && col >= 2 && !this.cells[row][col].occupied && !this.cells[row][col - 1].occupied && !this.cells[row][col - 2].occupied) {
+            for (i = col; i > col - 3; i--) {
+                cell = this.cells[row][i];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 2 && row >= 2 && !this.cells[row][col].occupied && !this.cells[row - 1][col].occupied && !this.cells[row - 2][col].occupied) {
+            for (i = row; i > row - 3; i--) {
+                cell = this.cells[i][col];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 3 && col <= 7 && !this.cells[row][col].occupied && !this.cells[row][col + 1].occupied && !this.cells[row][col + 2].occupied) {
+            for (i = col; i < col + 3; i++) {
+                cell = this.cells[row][i];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else
+            this.GenerateCruiser();
+    };
+    Board.prototype.GenereteDestroyer = function () {
+        var row = Math.floor(Math.random() * 10);
+        var col = Math.floor(Math.random() * 10);
+        var cell;
+        var i;
+        var direction = Math.floor(Math.random() * 4);
+        if (direction == 0 && row <= 8 && !this.cells[row][col].occupied && !this.cells[row + 1][col].occupied) {
+            for (i = row; i < row + 2; i++) {
+                cell = this.cells[i][col];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 1 && col >= 1 && !this.cells[row][col].occupied && !this.cells[row][col - 1].occupied) {
+            for (i = col; i > col - 2; i--) {
+                cell = this.cells[row][i];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 2 && row >= 1 && !this.cells[row][col].occupied && !this.cells[row - 1][col].occupied) {
+            for (i = row; i > row - 2; i--) {
+                cell = this.cells[i][col];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else if (direction == 3 && col <= 8 && !this.cells[row][col].occupied && !this.cells[row][col + 1].occupied) {
+            for (i = col; i < col + 2; i++) {
+                cell = this.cells[row][i];
+                cell.occupied = true;
+                cell.DrawShip(i, col);
+            }
+        }
+        else
+            this.GenereteDestroyer();
     };
     return Board;
 }());
@@ -233,6 +338,7 @@ var Cell = /** @class */ (function () {
     }
     Cell.prototype.DrawShip = function (row, col) {
         this.cellV.innerHTML = "X";
+        this.cellV.style.backgroundColor = "black";
     };
     return Cell;
 }());
