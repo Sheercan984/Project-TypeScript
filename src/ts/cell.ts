@@ -21,6 +21,14 @@ export class Cell {
     aHit(): void{
         this.cellV.style.backgroundColor = "pink"
     }
+
+    aMiss(): void{
+        this.cellV.style.backgroundColor = "grey"
+    }
+
+    AIShipShot(): void{
+        this.cellV.style.backgroundColor = "red"
+    }
     
     pHit(): void{
         this.pcellV.style.backgroundColor = "pink"

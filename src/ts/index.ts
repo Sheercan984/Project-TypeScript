@@ -1,4 +1,4 @@
-import {Board} from './Generator';
+import {Board} from './game';
 import '../scss/index.scss';
 document.getElementById("Start").addEventListener("click", function(){StartGame();});
 

@@ -1,4 +1,4 @@
-import {Board} from './generator';
+import {Board} from './game';
 import {Cell} from './cell';
 
 export class AiBoard

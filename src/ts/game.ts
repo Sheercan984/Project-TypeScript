@@ -1,7 +1,8 @@
-import {Cell} from './cell'
-import {Checks} from './checks'
+import {Cell} from './cell';
+import {Checks} from './checks';
 import {PlayerBoard} from './playerBoard';
 import {AiBoard } from './aiBoard';
+import {AI} from './ai';
 
 export class Board 
 {
@@ -33,11 +34,10 @@ export class Board
         let cell:Cell;
         cell = Board.acells[x][y];
         let i:number;
-        if(cell.occupied == true && !cell.lock)
+        if(cell.occupied && !cell.lock)
         {
             cell.lock = true;
             cell.pHit();
-            Checks.PWinCheck();
             for(i = 0; i<5; i++)
             {
                 if(cell == this.acarrier[i])
@@ -63,14 +63,14 @@ export class Board
                 if(cell == this.adestroyer[i])
                 Checks.DestroyerCheck();
             }
+            Checks.PWinCheck();
+            AI.Random();
         }
         else if (!cell.occupied && !cell.lock)
         {
             cell.lock = true;
             cell.pMiss();
+            AI.Random();
         }
     }
-
-    
-    
 }

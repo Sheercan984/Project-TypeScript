@@ -1,4 +1,4 @@
-import {Board} from './generator';
+import {Board} from './game';
 import {Cell} from './cell';
 
 
@@ -47,10 +47,11 @@ export class PlayerBoard
 
     GenerateCarrier() : void
     {
-        let row:number =Math.floor(Math.random() * 10)
-        let col:number =Math.floor(Math.random() * 10)
-        let cell: Cell
-        let i:number
+        let row:number =Math.floor(Math.random() * 10);
+        let col:number =Math.floor(Math.random() * 10);
+        let cell: Cell;
+        let i:number;
+        let j:number = 0;
         if (row < 5 && col < 5)
         {
             let direction:number =Math.floor(Math.random() *2)
@@ -61,7 +62,7 @@ export class PlayerBoard
                     cell = Board.pcells[row][i]
                     cell.occupied = true
                     cell.DrawShip()
-                    Board.pcarrier[i] = cell;
+                    Board.pcarrier[j++] = Board.pcells[row][i];
                 }
             }
             else if (direction == 1)
@@ -71,7 +72,7 @@ export class PlayerBoard
                     cell = Board.pcells[i][col]
                     cell.occupied = true
                     cell.DrawShip()
-                    Board.pcarrier[i] = cell;
+                    Board.pcarrier[j++] = Board.pcells[i][col];
                 }
             }
             
@@ -86,7 +87,7 @@ export class PlayerBoard
                     cell = Board.pcells[row][i]
                     cell.occupied = true
                     cell.DrawShip()
-                    Board.pcarrier[i] = cell;
+                    Board.pcarrier[j++] = Board.pcells[row][i];
                 }
             }
             else if (direction == 1)
@@ -96,7 +97,7 @@ export class PlayerBoard
                     cell = Board.pcells[i][col]
                     cell.occupied = true
                     cell.DrawShip()
-                    Board.pcarrier[i] = cell;
+                    Board.pcarrier[j++] = Board.pcells[i][col];
                 }
             }
             
@@ -111,7 +112,7 @@ export class PlayerBoard
                     cell = Board.pcells[row][i]
                     cell.occupied = true
                     cell.DrawShip()
-                    Board.pcarrier[i] = cell;
+                    Board.pcarrier[j++] = Board.pcells[row][i];
                 }
             }
             else if (direction == 1)
@@ -121,7 +122,7 @@ export class PlayerBoard
                     cell = Board.pcells[i][col]
                     cell.occupied = true
                     cell.DrawShip()
-                    Board.pcarrier[i] = cell;
+                    Board.pcarrier[j++] = Board.pcells[i][col];
                 }
             }
             
@@ -136,7 +137,7 @@ export class PlayerBoard
                     cell = Board.pcells[row][i]
                     cell.occupied = true
                     cell.DrawShip()
-                    Board.pcarrier[i] = cell;
+                    Board.pcarrier[j++] = Board.pcells[row][i];
                 }
             }
             else if (direction == 1)
@@ -146,7 +147,7 @@ export class PlayerBoard
                     cell = Board.pcells[i][col]
                     cell.occupied = true
                     cell.DrawShip()
-                    Board.pcarrier[i] = cell;
+                    Board.pcarrier[j++] = Board.pcells[i][col];
                 }
             }
             
@@ -155,10 +156,11 @@ export class PlayerBoard
 
     GenerateBattleship() : void
     {
-        let row:number =Math.floor(Math.random() * 10)
-        let col:number =Math.floor(Math.random() * 10)
-        let cell: Cell
-        let i:number
+        let row:number =Math.floor(Math.random() * 10);
+        let col:number =Math.floor(Math.random() * 10);
+        let cell: Cell;
+        let i:number;
+        let j:number = 0;
         if (row < 5 && col < 5)
         {
             let direction:number = Math.floor(Math.random() *2)
@@ -171,6 +173,7 @@ export class PlayerBoard
                         cell = Board.pcells[row][i]
                         cell.occupied = true
                         cell.DrawShip()
+                        Board.pbattleship[j++] = Board.pcells[row][i];
                     }
                 } 
                 else
@@ -188,6 +191,7 @@ export class PlayerBoard
                         cell = Board.pcells[i][col]
                         cell.occupied = true
                         cell.DrawShip()
+                        Board.pbattleship[j++] = Board.pcells[i][col];
                     }
                 }
                 else
@@ -209,6 +213,7 @@ export class PlayerBoard
                         cell = Board.pcells[row][i]
                         cell.occupied = true
                         cell.DrawShip()
+                        Board.pbattleship[j++] = Board.pcells[row][i];
                     }
                 } 
                 else
@@ -225,6 +230,7 @@ export class PlayerBoard
                         cell = Board.pcells[i][col]
                         cell.occupied = true
                         cell.DrawShip()
+                        Board.pbattleship[j++] = Board.pcells[i][col];
                     }
                 }
                 else
@@ -246,6 +252,7 @@ export class PlayerBoard
                         cell = Board.pcells[row][i]
                         cell.occupied = true
                         cell.DrawShip()
+                        Board.pbattleship[j++] = Board.pcells[row][i];
                     }
                 } 
                 else
@@ -262,6 +269,7 @@ export class PlayerBoard
                         cell = Board.pcells[i][col]
                         cell.occupied = true
                         cell.DrawShip()
+                        Board.pbattleship[j++] = Board.pcells[i][col];
                     }
                 }
                 else
@@ -283,6 +291,7 @@ export class PlayerBoard
                         cell = Board.pcells[row][i]
                         cell.occupied = true
                         cell.DrawShip()
+                        Board.pbattleship[j++] = Board.pcells[row][i];
                     }
                 } 
                 else
@@ -299,6 +308,7 @@ export class PlayerBoard
                         cell = Board.pcells[i][col]
                         cell.occupied = true
                         cell.DrawShip()
+                        Board.pbattleship[j++] = Board.pcells[i][col];
                     }
                 }
                 else
@@ -311,10 +321,11 @@ export class PlayerBoard
 
     GenerateSubmarine() :void
     {
-        let row:number =Math.floor(Math.random() * 10)
-        let col:number =Math.floor(Math.random() * 10)
-        let cell: Cell
-        let i:number
+        let row:number =Math.floor(Math.random() * 10);
+        let col:number =Math.floor(Math.random() * 10);
+        let cell: Cell;
+        let i:number;
+        let j:number = 0;
         let direction:number = Math.floor(Math.random() * 4)
         if (direction == 0 && row <= 7 && !Board.pcells[row][col].occupied && !Board.pcells[row+1][col].occupied && !Board.pcells[row+2][col].occupied)
         {
@@ -323,6 +334,7 @@ export class PlayerBoard
                 cell = Board.pcells[i][col]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.psubmarine[j++] = Board.pcells[i][col];
             }
         }
         else if (direction == 1 && col >= 2 && !Board.pcells[row][col].occupied && !Board.pcells[row][col-1].occupied && !Board.pcells[row][col-2].occupied)
@@ -332,6 +344,7 @@ export class PlayerBoard
                 cell = Board.pcells[row][i]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.psubmarine[j++] = Board.pcells[row][i];
             }
         }
         else if (direction == 2 && row >= 2 && !Board.pcells[row][col].occupied && !Board.pcells[row-1][col].occupied && !Board.pcells[row-2][col].occupied)
@@ -341,6 +354,7 @@ export class PlayerBoard
                 cell = Board.pcells[i][col]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.psubmarine[j++] = Board.pcells[i][col];
             }
         }
         else if (direction == 3 && col <= 7 && !Board.pcells[row][col].occupied && !Board.pcells[row][col+1].occupied && !Board.pcells[row][col+2].occupied)
@@ -349,6 +363,7 @@ export class PlayerBoard
                 cell = Board.pcells[row][i]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.psubmarine[j++] = Board.pcells[row][i];
             }
         }
         else
@@ -357,10 +372,11 @@ export class PlayerBoard
 
     GenerateCruiser() :void
     {
-        let row:number =Math.floor(Math.random() * 10)
-        let col:number =Math.floor(Math.random() * 10)
-        let cell: Cell
-        let i:number
+        let row:number =Math.floor(Math.random() * 10);
+        let col:number =Math.floor(Math.random() * 10);
+        let cell: Cell;
+        let i:number;
+        let j:number = 0;
         let direction:number = Math.floor(Math.random() * 4)
         if (direction == 0 && row <= 7 && !Board.pcells[row][col].occupied && !Board.pcells[row+1][col].occupied && !Board.pcells[row+2][col].occupied)
         {
@@ -369,6 +385,7 @@ export class PlayerBoard
                 cell = Board.pcells[i][col]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.pcruiser[j++] = Board.pcells[i][col];
             }
         }
         else if (direction == 1 && col >= 2 && !Board.pcells[row][col].occupied && !Board.pcells[row][col-1].occupied && !Board.pcells[row][col-2].occupied)
@@ -378,6 +395,7 @@ export class PlayerBoard
                 cell = Board.pcells[row][i]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.pcruiser[j++] = Board.pcells[row][i];
             }
         }
         else if (direction == 2 && row >= 2 && !Board.pcells[row][col].occupied && !Board.pcells[row-1][col].occupied && !Board.pcells[row-2][col].occupied)
@@ -387,6 +405,7 @@ export class PlayerBoard
                 cell = Board.pcells[i][col]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.pcruiser[j++] = Board.pcells[i][col];
             }
         }
         else if (direction == 3 && col <= 7 && !Board.pcells[row][col].occupied && !Board.pcells[row][col+1].occupied && !Board.pcells[row][col+2].occupied)
@@ -395,6 +414,7 @@ export class PlayerBoard
                 cell = Board.pcells[row][i]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.pcruiser[j++] = Board.pcells[row][i];
             }
         }
         else
@@ -403,10 +423,11 @@ export class PlayerBoard
 
     GenereteDestroyer(): void
     {
-        let row:number =Math.floor(Math.random() * 10)
-        let col:number =Math.floor(Math.random() * 10)
-        let cell: Cell
-        let i:number
+        let row:number =Math.floor(Math.random() * 10);
+        let col:number =Math.floor(Math.random() * 10);
+        let cell: Cell;
+        let i:number;
+        let j:number = 0;
         let direction:number = Math.floor(Math.random() * 4)
         if (direction == 0 && row <= 8 && !Board.pcells[row][col].occupied && !Board.pcells[row+1][col].occupied)
         {
@@ -415,6 +436,7 @@ export class PlayerBoard
                 cell = Board.pcells[i][col]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.pdestroyer[j++] = Board.pcells[i][col];
             }
         }
         else if (direction == 1 && col >= 1 && !Board.pcells[row][col].occupied && !Board.pcells[row][col-1].occupied)
@@ -424,6 +446,7 @@ export class PlayerBoard
                 cell = Board.pcells[row][i]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.pdestroyer[j++] = Board.pcells[row][i];
             }
         }
         else if (direction == 2 && row >= 1 && !Board.pcells[row][col].occupied && !Board.pcells[row-1][col].occupied)
@@ -433,6 +456,7 @@ export class PlayerBoard
                 cell = Board.pcells[i][col]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.pdestroyer[j++] = Board.pcells[i][col];
             }
         }
         else if (direction == 3 && col <= 8 && !Board.pcells[row][col].occupied && !Board.pcells[row][col+1].occupied)
@@ -442,6 +466,7 @@ export class PlayerBoard
                 cell = Board.pcells[row][i]
                 cell.occupied = true
                 cell.DrawShip()
+                Board.pdestroyer[j++] = Board.pcells[row][i];
             }
         }
         else

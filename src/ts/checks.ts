@@ -1,4 +1,4 @@
-import { Board } from "./generator";
+import { Board } from "./game";
 import { Cell } from "./cell";
 
 
@@ -11,6 +11,13 @@ export class Checks{
     static CrShot:number = 0;
     static DShot:number = 0;
 
+    static AIPShoot:number = 0;
+    static AICaShot:number = 0;
+    static AIBShot:number = 0;
+    static AISShot:number = 0;
+    static AICrShot:number = 0;
+    static AIDShot:number = 0;
+
     static PWinCheck(): void
     {
         this.PShoot++
@@ -20,9 +27,13 @@ export class Checks{
         }
     }
 
-    AWinCheck(): void
+    static AWinCheck(): void
     {
-
+        this.AIPShoot++
+        if (this.AIPShoot == 17)
+        {
+            alert("AI Wins")
+        }
     }
 
     static CarrierCheck() :void
@@ -131,6 +142,116 @@ export class Checks{
             {
                 cell = Board.adestroyer[i]
                 cell.ShipShot();
+            }
+        }
+    }
+
+    static AICarrierCheck() :void
+    {
+        let cell: Cell;
+        let i:number
+        for(i = 0; i < 5; i++)
+        {
+            cell = Board.pcarrier[i]
+            if(cell.lock)
+            {
+                this.AICaShot++
+            }
+        }
+        if (this.AICaShot == 15)
+        {
+            for(i = 0; i < 5; i++)
+            {
+                cell = Board.pcarrier[i]
+                cell.AIShipShot();
+            }
+        }
+    }
+
+    static AIBattleshipCheck() :void
+    {
+        let cell: Cell;
+        let i:number
+        for(i = 0; i < 4; i++)
+        {
+            cell = Board.pbattleship[i]
+            if(cell.lock)
+            {
+                this.AIBShot++
+            }
+        }
+        if (this.AIBShot == 10)
+        {
+            for(i = 0; i < 4; i++)
+            {
+                cell = Board.pbattleship[i]
+                cell.AIShipShot();
+            }
+        }
+    }
+
+    static AISubmarineCheck() :void
+    {
+        let cell: Cell;
+        let i:number
+        for(i = 0; i < 3; i++)
+        {
+            cell = Board.psubmarine[i]
+            if(cell.lock)
+            {
+                this.AISShot++
+            }
+        }
+        if (this.AISShot == 6)
+        {
+            for(i = 0; i < 3; i++)
+            {
+                cell = Board.psubmarine[i]
+                cell.AIShipShot();
+            }
+        }
+    }
+
+    static AICruiserCheck() :void
+    {
+        let cell: Cell;
+        let i:number
+        for(i = 0; i < 3; i++)
+        {
+            cell = Board.pcruiser[i]
+            if(cell.lock)
+            {
+                this.AICrShot++
+            }
+        }
+        if (this.AICrShot == 6)
+        {
+            for(i = 0; i < 3; i++)
+            {
+                cell = Board.pcruiser[i]
+                cell.AIShipShot();
+            }
+        }
+    }
+
+    static AIDestroyerCheck() :void
+    {
+        let cell: Cell;
+        let i:number
+        for(i = 0; i < 2; i++)
+        {
+            cell = Board.pdestroyer[i]
+            if(cell.lock)
+            {
+                this.AIDShot++
+            }
+        }
+        if (this.AIDShot == 3)
+        {
+            for(i = 0; i < 2; i++)
+            {
+                cell = Board.pdestroyer[i]
+                cell.AIShipShot();
             }
         }
     }
